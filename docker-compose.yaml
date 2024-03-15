@@ -1,0 +1,21 @@
+# версия composer
+version: '2'
+
+# раздел служб
+services:
+# служба, вызывающая дату
+ date1:
+# базовый образ контейнера
+  image: custom_image
+# команда, выполняемая после запуска контейнера
+  command: bash home/test/simple.bash
+# вторая служба, тоже вызывающая дату
+ date2:
+# базовый образ контейнера
+  image: custom_image
+# команда, выполняемая после запуска контейнера
+  command: bash home/test/simple.bash
+# зависимость - запуск date2 осуществляется после date1
+  depends_on:
+  - date1
+
